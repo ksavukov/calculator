@@ -3,9 +3,11 @@
  * @see Scanner
  */
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.io.*;
 
 public class Base {
-    public static void main(String[] args) {
+    public static void main(String[] args)throws Exception {
 
         /** @see Scanner */
         Scanner scanner = new Scanner(System.in);
@@ -55,8 +57,30 @@ public class Base {
 
         }
 
-        public static void massived(){
-
+        public static void massived() throws Exception{
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("Введите количество слов: ");
+            int size = Integer.parseInt(reader.readLine());
+            ArrayList<String> strings = new ArrayList<String>();
+            System.out.println("Введите слова: ");
+            for (int i = 0; i < size; i++) {
+                strings.add(reader.readLine());
+            }
+            String max = strings.get(0);
+            for (int i = 1; i < strings.size(); i++)
+            {
+                if (strings.get(i).length() > max.length())
+                {
+                    max = strings.get(i);
+                }
+            }
+            for (int i = 0; i < strings.size(); i++)
+            {
+                if (max.length() == strings.get(i).length())
+                {
+                    System.out.println(strings.get(i));
+                }
+            }
         }
 
     }
